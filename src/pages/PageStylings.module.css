@@ -3,10 +3,14 @@
   font-weight: bold;
 }
 
-.homeHeading {
+.generalHeading {
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: underline;
   padding-top: 30px;
   padding-left: 15px;
+}
+
+.ul {
+  list-style-type: square;
 }
