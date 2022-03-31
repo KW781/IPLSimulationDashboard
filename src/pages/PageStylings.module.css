@@ -4,13 +4,17 @@
 }
 
 .generalHeading {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
   text-decoration: underline;
-  padding-top: 30px;
+  padding-top: 10px;
   padding-left: 15px;
 }
 
 .ul {
   list-style-type: square;
+}
+
+.ul li {
+  padding-bottom: 5px;
 }

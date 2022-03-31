@@ -1,6 +1,6 @@
 function StatsViewer() {
   return (
-    <div>StatsViewer</div>
+    <div>Stats Viewer - Still in development</div>
   );
 }
 

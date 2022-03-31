@@ -1,6 +1,6 @@
 function FeedbackPage() {
   return (
-    <div>Feedback Page</div>
+    <div>Feedback Page - Still in development</div>
   );
 }
 
