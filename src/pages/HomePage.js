@@ -133,6 +133,13 @@ function HomePage() {
       <header className={classes.generalHeading}>
         Download
       </header>
+      <body>
+        <ul className={classes.ul}>
+          <li>
+          To be completed soon
+          </li>
+        </ul>
+      </body>
     </div>
 
   );
