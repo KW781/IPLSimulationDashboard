@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function NavBar() {
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>IPL Simulation Dashboard</div>
+      <div>IPL Simulation Dashboard</div>
       <ul>
         <li>
           <Link to='/'>Home</Link>

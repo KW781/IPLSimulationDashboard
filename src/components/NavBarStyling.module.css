@@ -4,11 +4,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #334AFF;
+  background-color: #080f41;
   padding: 0 10%;
 }
 
-.logo {
+/*this describes the logo of the nav bar*/
+.header div {
   font-size: 2rem;
   color: white;
   font-weight: bold;
