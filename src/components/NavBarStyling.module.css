@@ -8,8 +8,7 @@
   padding: 0 10%;
 }
 
-/*this describes the logo of the nav bar*/
-.header div {
+.header div { /*this describes the logo of the nav bar*/
   font-size: 2rem;
   color: white;
   font-weight: bold;

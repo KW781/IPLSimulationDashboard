@@ -1,3 +1,13 @@
+/*
+.card {
+  height: 5rem;
+  width: 90%;
+  background-color: #080f41;
+  padding-top: 30px;
+  padding-bottom: 5rem;
+  padding-left: 15px;
+} */
+
 .notFound {
   font-size: 1.5rem;
   font-weight: bold;
@@ -9,8 +19,6 @@
   font-weight: bold;
   color: #ffffff;
   text-decoration: underline;
-  padding-top: 10px;
-  padding-left: 15px;
 }
 
 .ul {
