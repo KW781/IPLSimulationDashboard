@@ -1,4 +1,5 @@
 import classes from './PageStylings.module.css';
+import Card from './src/components/Card.js';
 
 function HomePage() {
   const initDescript = (
@@ -151,7 +152,7 @@ function HomePage() {
 
   return (
     <div>
-
+      <Card properties={initDescript} />
     </div>
   );
 }

@@ -1,9 +1,9 @@
+import classes from './CardStyling.module.css';
 
-
-function Card() {
+function Card(properties) {
   return (
-    <div>
-    Card
+    <div className={classes.card}>
+      {properties.children}
     </div>
   );
 }
