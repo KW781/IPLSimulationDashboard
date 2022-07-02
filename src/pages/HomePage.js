@@ -4,12 +4,12 @@ import Card from '../components/Card.js';
 function HomePage() {
   const initDescript = (
     <div>
-      <header className={classes.generalHeading}>
+      <header>
       Welcome to the IPL Simulation!
       </header>
 
       <body>
-        <ul className={classes.ul}>
+        <ul>
           <li>
           This is a text-based game that simulates the Indian Premier League!
           </li>
@@ -25,11 +25,11 @@ function HomePage() {
 
   const features = (
     <div>
-      <header className={classes.generalHeading}>
+      <header>
       Features
       </header>
       <body>
-        <ul className={classes.ul}>
+        <ul>
           <li>
           All cricketers are drawn from a central database with 200+ players,
           with more being added day by day!
@@ -61,11 +61,11 @@ function HomePage() {
 
   const installation = (
     <div>
-      <header className={classes.generalHeading}>
+      <header>
       How to install and run
       </header>
       <body>
-        <ul className={classes.ul}>
+        <ul>
           <li>
           To be completed soon
           </li>
@@ -76,11 +76,11 @@ function HomePage() {
 
   const rules = (
     <div>
-      <header className={classes.generalHeading}>
+      <header>
       How to play
       </header>
       <body>
-        <ul className={classes.ul}>
+        <ul>
           <li>
           After running the app, you will be prompted to either enter your
           login details or create a new login. This login is what will allow
@@ -148,11 +148,11 @@ function HomePage() {
 
   const downloadInstructs = (
     <div>
-      <header className={classes.generalHeading}>
+      <header>
         Download
       </header>
       <body>
-        <ul className={classes.ul}>
+        <ul>
           <li>
           To be completed soon
           </li>
@@ -163,7 +163,7 @@ function HomePage() {
 
   return (
     <div>
-      <Card />
+      <Card>{initDescript}</Card>
     </div>
   );
 }

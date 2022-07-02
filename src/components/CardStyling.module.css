@@ -1,6 +1,6 @@
 .card {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 5px;
   border-radius: 15px;
   background-color: #080f41;
   padding-left: 10px;
@@ -10,12 +10,24 @@
 }
 
 .card header {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: underline;
   color: #ffffff;
 }
 
 .card body {
   color: #ffffff;
   background-color: #080f41;
+}
+
+.card ul {
+  list-style-type: square;
+  color: #ffffff;
+}
+
+.card li {
+  padding-bottom: 3px;
 }
 
 .separator {

@@ -1,33 +1,7 @@
-/*
-.card {
-  height: 5rem;
-  width: 90%;
-  background-color: #080f41;
-  padding-top: 30px;
-  padding-bottom: 5rem;
-  padding-left: 15px;
-} */
-
 .notFound {
   font-size: 1.5rem;
   font-weight: bold;
   color: #ffffff;
-}
-
-.generalHeading {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #ffffff;
-  text-decoration: underline;
-}
-
-.ul {
-  list-style-type: square;
-  color: #ffffff;
-}
-
-.ul li {
-  padding-bottom: 5px;
 }
 
 .form {}
