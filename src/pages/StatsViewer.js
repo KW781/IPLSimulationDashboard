@@ -1,6 +1,8 @@
+import classes from './PageStylings.module.css';
+
 function StatsViewer() {
   return (
-    <div>Stats Viewer - Still in development</div>
+    <div className={classes.placeholderText}>Stats Viewer - Still in development</div>
   );
 }
 
