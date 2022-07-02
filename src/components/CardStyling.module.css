@@ -2,9 +2,9 @@
   padding-top: 15px;
   padding-bottom: 5px;
   border-radius: 15px;
-  background-color: #080f41;
   padding-left: 10px;
   padding-right: 10px;
+  background-color: #080f41;
   width: 96%;
   margin: auto;
 }
@@ -27,7 +27,7 @@
 }
 
 .card li {
-  padding-bottom: 3px;
+  padding-bottom: 10px;
 }
 
 .separator {

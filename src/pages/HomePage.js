@@ -164,6 +164,10 @@ function HomePage() {
   return (
     <div>
       <Card>{initDescript}</Card>
+      <Card>{features}</Card>
+      <Card>{installation}</Card>
+      <Card>{rules}</Card>
+      <Card>{downloadInstructs}</Card>
     </div>
   );
 }
