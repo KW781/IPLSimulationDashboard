@@ -1,7 +1,24 @@
 .card {
-  height: 5rem;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  border-radius: 2px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 15px;
   background-color: #080f41;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 96%;
+  margin: auto;
+}
+
+.card header {
+  color: #ffffff;
+}
+
+.card body {
+  color: #ffffff;
+  background-color: #080f41;
+}
+
+.separator {
+  height: 1.5rem;
+  background-color: #000000;
 }
