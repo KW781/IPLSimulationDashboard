@@ -1,5 +1,6 @@
 import classes from './PageStylings.module.css';
 import Card from '../components/Card.js';
+import StarRating from '../components/StarRating.js';
 
 function FeedbackPage() {
   return (
@@ -16,10 +17,7 @@ function FeedbackPage() {
           features to future versions.
           </li>
         </ul>
-        <form className={classes.form}>
-          <header>Rate IPL Simulation</header>
-          <input type='text' required id='rating' />
-        </form>
+        <StarRating />
       </div>
     </Card>
   );
