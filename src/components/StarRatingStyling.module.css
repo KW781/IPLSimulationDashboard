@@ -1,12 +1,19 @@
-button {
+.on {
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
+  color: #000000;
+  width: 50px;
+  font-size: 50px;
 }
-.on {
-  color: #000;
-}
+
 .off {
-  color: #ccc;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #ffff00;
+  width: 50px;
+  font-size: 50px;
 }
