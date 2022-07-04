@@ -8,10 +8,12 @@ function SubmitButton() {
 
   return (
     <div>
+      <div className={classes.separator} />
       <button onClick={() => setSubmitted(true)}
               className={submitted ? classes.submitted : classes.unsubmitted}>
                 {submitted ? submittedText : unsubmittedText}
       </button>
+      <div className={classes.separator} />
     </div>
   );
 }
