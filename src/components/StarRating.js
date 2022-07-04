@@ -1,11 +1,8 @@
-import { useState } from "react";
-import classes from "./StarRatingStyling.module.css";
+import { useState } from 'react';
+import classes from './StarRatingStyling.module.css';
+import SubmitButton from './SubmitButton.js';
 
 function StarRating() {
-  const submittedText = (<div>Submitted	&#10003;</div>);
-  const unsubmittedText = (<div>Submit</div>);
-
-  const [submitted, setSubmitted] = useState(false);
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
 
@@ -28,12 +25,7 @@ function StarRating() {
           );
         })}
       </div>
-      <div className={classes.separator}/>
-      <button onClick={() => setSubmitted(true)}
-              className={submitted ? classes.submitted : classes.unsubmitted}>
-                {submitted ? submittedText : unsubmittedText}
-      </button>
-      <div className={classes.separator} />
+      <SubmitButton />
     </div>
   );
 }
