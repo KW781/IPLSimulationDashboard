@@ -22,6 +22,7 @@ function StarRating() {
           </button>
         );
       })}
+      <button className={classes.submit}>Submit</button>
     </div>
   );
 }
