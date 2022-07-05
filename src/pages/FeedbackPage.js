@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import classes from './PageStylings.module.css';
 import Card from '../components/Card.js';
 import StarRating from '../components/StarRating.js';
 import SubmitButton from '../components/SubmitButton.js';
 
 function FeedbackPage() {
+  const [feedbackText, setFeedbackText] = useState('');
+
   return (
     <div>
       <Card>
@@ -31,7 +34,12 @@ function FeedbackPage() {
         <header>Write feedback on IPL Simulation</header>
         <div className={classes.separator} />
         <form>
-          <textarea input="text" className={classes.textbox}></textarea>
+          <textarea input="text"
+                    value={feedbackText}
+                    onChange={(e) => {
+                      setFeedbackText(e.target.value);
+                    }}
+                    className={classes.textbox} />
         </form>
         <SubmitButton />
       </Card>
