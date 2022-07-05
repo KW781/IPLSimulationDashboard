@@ -1,6 +1,7 @@
 import classes from './PageStylings.module.css';
 import Card from '../components/Card.js';
 import StarRating from '../components/StarRating.js';
+import SubmitButton from '../components/SubmitButton.js';
 
 function FeedbackPage() {
   return (
@@ -28,6 +29,11 @@ function FeedbackPage() {
 
       <Card>
         <header>Write feedback on IPL Simulation</header>
+        <div className={classes.separator} />
+        <form>
+          <textarea input="text" className={classes.textbox}></textarea>
+        </form>
+        <SubmitButton />
       </Card>
     </div>
   );

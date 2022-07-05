@@ -8,22 +8,19 @@
   color: #ffffff;
 }
 
-.submit {
-  float: right;
-  background-color: #ffffff;
-  color: #000000;
-  width: 60px;
-  height: 25px;
+.separator {
+  height: 1rem;
+  background-color: #080f41;
 }
 
-.form {}
-
-.form div {
-  font-weight: bold;
-  font-size: 1.2rem;
-  padding-bottom: 10px;
-  padding-top: 13px;
-  padding-left: 25px;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
+.textbox {
+  width: 100%;
+  padding-bottom: 10rem;
+  padding-top: 7.5px;
+  padding-left: 7.5px;
+  border: none;
+  border-radius: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 540;
 }
