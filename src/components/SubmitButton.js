@@ -1,15 +1,22 @@
 import { useState } from 'react';
 import classes from './SubmitButtonStyling.module.css';
 
-function SubmitButton() {
+function SubmitButton(properties) {
   const submittedText = (<div>Submitted	&#10003;</div>);
   const unsubmittedText = (<div>Submit</div>);
   const [submitted, setSubmitted] = useState(false);
 
+  function clickFunc() {
+    if (!submitted) {
+      properties.uponClick();
+      setSubmitted(true);
+    }
+  }
+
   return (
     <div>
       <div className={classes.separator} />
-      <button onClick={() => setSubmitted(true)}
+      <button onClick={clickFunc}
               className={submitted ? classes.submitted : classes.unsubmitted}>
                 {submitted ? submittedText : unsubmittedText}
       </button>
