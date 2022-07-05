@@ -8,8 +8,8 @@ function SubmitButton(properties) {
 
   function clickFunc() {
     if (!submitted) {
-      properties.uponClick();
       setSubmitted(true);
+      properties.uponClick();
     }
   }
 
