@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { firestore } from '../firebase/firebaseSetup.js';
+import { collection, addDoc } from '@firebase/firestore';
 import classes from './PageStylings.module.css';
 import Card from '../components/Card.js';
 import StarRating from '../components/StarRating.js';
@@ -6,6 +8,12 @@ import SubmitButton from '../components/SubmitButton.js';
 
 function FeedbackPage() {
   const [feedbackText, setFeedbackText] = useState('');
+
+  async function submitFeedback() {
+    await addDoc(collection(firestore, 'feedback'), {
+      feedback: feedbackText
+    });
+  }
 
   return (
     <div>
@@ -41,7 +49,7 @@ function FeedbackPage() {
                     }}
                     className={classes.textbox} />
         </form>
-        <SubmitButton />
+        <SubmitButton uponClick={submitFeedback}/>
       </Card>
     </div>
   );
