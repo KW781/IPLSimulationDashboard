@@ -8,11 +8,15 @@ import SubmitButton from '../components/SubmitButton.js';
 
 function FeedbackPage() {
   const [feedbackText, setFeedbackText] = useState('');
+  const [disableText, setDisableText] = useState(false);
 
   async function submitFeedback() {
+    /* update firestore collection with new feedback submission */
     await addDoc(collection(firestore, 'feedback'), {
       feedback: feedbackText
     });
+
+    setDisableText(true); /* disable text submission once submitted */
   }
 
   return (
@@ -47,7 +51,8 @@ function FeedbackPage() {
                     onChange={(e) => {
                       setFeedbackText(e.target.value);
                     }}
-                    className={classes.textbox} />
+                    className={classes.textbox}
+                    readOnly={disableText}/>
         </form>
         <SubmitButton uponClick={submitFeedback}/>
       </Card>
