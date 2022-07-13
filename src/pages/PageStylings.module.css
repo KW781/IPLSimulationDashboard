@@ -10,7 +10,7 @@
 
 .separator {
   height: 1rem;
-  background-color: #080f41;
+  opacity: 0;
 }
 
 .textbox {
