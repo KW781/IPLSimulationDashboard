@@ -126,7 +126,7 @@ function FeedbackPage() {
                     className={classes.textbox}
                     readOnly={submittedText || !loggedIn}/>
         </form>
-        <SubmitButton uponClick={submitFeedback}/>
+        <SubmitButton uponClick={submitFeedback} disabled={!loggedIn}/>
       </Card>
     </div>
   );

@@ -4,11 +4,14 @@ import classes from './SubmitButtonStyling.module.css';
 function SubmitButton(props) {
   const submittedText = (<div>Submitted	&#10003;</div>);
   const unsubmittedText = (<div>Submit</div>);
+
   const [submitted, setSubmitted] = useState(false);
+  const [buttonClass, setButtonClass] = useState(props.disabled ? classes.disabled : classes.unsubmitted);
 
   function clickFunc() {
-    if (!submitted) {
+    if ((!submitted) && (!props.disabled)) {
       setSubmitted(true);
+      setButtonClass(classes.submitted);
       props.uponClick();
     }
   }
@@ -17,7 +20,7 @@ function SubmitButton(props) {
     <div>
       <div className={classes.separator} />
       <button onClick={clickFunc}
-              className={submitted ? classes.submitted : classes.unsubmitted}>
+              className={buttonClass}>
                 {submitted ? submittedText : unsubmittedText}
       </button>
       <div className={classes.separator} />
