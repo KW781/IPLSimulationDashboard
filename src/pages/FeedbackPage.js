@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { firestore } from '../firebase/firebaseSetup.js';
-import { collection, addDoc } from '@firebase/firestore';
+import { collection, addDoc, doc, getDoc } from '@firebase/firestore';
 import classes from './PageStylings.module.css';
 import Card from '../components/Card.js';
 import StarRating from '../components/StarRating.js';
@@ -8,7 +8,13 @@ import SubmitButton from '../components/SubmitButton.js';
 
 function FeedbackPage() {
   const [feedbackText, setFeedbackText] = useState('');
-  const [disableText, setDisableText] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [submittedText, setSubmittedText] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [buttonClass, setButtonClass] = useState(classes.loginButtonDefault);
+  const [buttonText, setButtonText] = useState(<div>Login</div>);
 
   async function submitFeedback() {
     /* update firestore collection with new feedback submission */
@@ -16,7 +22,43 @@ function FeedbackPage() {
       feedback: feedbackText
     });
 
-    setDisableText(true); /* disable text submission once submitted */
+    setSubmittedText(true); /* disable text submission once submitted */
+  }
+
+  async function loginUser() {
+    if (username === '') {
+      /* if username is empty then fail the user validation */
+      setButtonClass(classes.loginButtonFail);
+      setButtonText(<div>Incorrect username/password &#10060;</div>);
+
+      setTimeout(() => {
+        setButtonClass(classes.loginButtonDefault);
+        setButtonText(<div>Login</div>);
+      }, 2500);
+
+      return;
+    }
+
+    /* retireve user data from firebase, assuming username isn't empty */
+    const userRef = doc(firestore, 'users', username);
+    const userData = await getDoc(userRef);
+
+    if ((userData.exists()) && (userData.password === password)) {
+      /* set state to logged in and change button if user login is valid */
+      setButtonClass(classes.loginButtonSuccess);
+      setButtonText(<div>Logged In &#10003</div>);
+      setLoggedIn(true);
+    } else {
+      /* if user login is invalid display on button */
+      setButtonClass(classes.loginButtonFail);
+      setButtonText(<div>Incorrect username/password &#10060;</div>);
+
+      /* change button to normal state after 2.5s */
+      setTimeout(() => {
+        setButtonClass(classes.loginButtonDefault);
+        setButtonText(<div>Login</div>);
+      }, 2500);
+    }
   }
 
   return (
@@ -38,6 +80,36 @@ function FeedbackPage() {
       </Card>
 
       <Card>
+        <header>Login</header>
+        <div className={classes.separator} />
+        <body>
+          Login using the username and password that you created when playing
+          the game to submit ratings and feedback.
+        </body>
+        <div className={classes.separator} />
+
+        <label className={classes.loginFieldLabel}>Username: </label>
+        <input type="text"
+               value={username}
+               onChange={(e) => {
+                 setUsername(e.target.value);
+               }}/>
+        <br /><br />
+        <label className={classes.loginFieldLabel}>Password: </label>
+        <input type="text"
+               value={password}
+               onChange={(e) => {
+                 setPassword(e.target.value);
+               }}/>
+
+        <div className={classes.separator} />
+        <button className={buttonClass} onClick={loginUser}>
+          {buttonText}
+        </button>
+        <div className={classes.separator} />
+      </Card>
+
+      <Card>
         <header>Rate IPL Simulation</header>
         <StarRating />
       </Card>
@@ -52,7 +124,7 @@ function FeedbackPage() {
                       setFeedbackText(e.target.value);
                     }}
                     className={classes.textbox}
-                    readOnly={disableText}/>
+                    readOnly={submittedText || !loggedIn}/>
         </form>
         <SubmitButton uponClick={submitFeedback}/>
       </Card>
