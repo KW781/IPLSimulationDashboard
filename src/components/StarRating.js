@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { firestore } from '../firebase/firebaseSetup.js';
-import { updateDoc, getDoc, doc } from '@firebase/firestore';
+import { updateDoc, getDoc, doc, setDoc } from '@firebase/firestore';
 import classes from './StarRatingStyling.module.css';
 import SubmitButton from './SubmitButton.js';
 
@@ -9,11 +9,12 @@ function StarRating(props) {
   const [hover, setHover] = useState(0);
   const [starSubmitted, setStarSubmitted] = useState(false);
 
-  async function updateRating(props) {
+  async function updateRating() {
     const ratingsRef = doc(firestore, 'ratings', 'avg-rating'); /* retrieve the document ratings document reference */
-    const docSnap = await getDoc(ratingsRef); /* get the document itself from the reference */
-    const currNumRatings = docSnap.data().numRatings;
-    const currAvgRating = docSnap.data().rating;
+    const ratingSnap = await getDoc(ratingsRef); /* get the document itself from the reference */
+    const userRef = doc(firestore, 'users', props.username); /* obtain the user that submitted the rating*/
+    const currNumRatings = ratingSnap.data().numRatings;
+    const currAvgRating = ratingSnap.data().rating;
     /* calculate the new average rating */
     const newAvgRating = (currAvgRating * currNumRatings + rating) / (currNumRatings + 1);
 
@@ -23,8 +24,13 @@ function StarRating(props) {
       numRatings: currNumRatings + 1
     });
 
+    /* update the user indicating that they've submitted their rating */
+    await setDoc(userRef, { ratingSubmit: true }, { merge: true });
+
     setStarSubmitted(true); /* disable the stars once submit button is clicked */
   }
+
+
 
   function getStarClass(index) {
     if (props.disabled) {

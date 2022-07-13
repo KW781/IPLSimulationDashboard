@@ -13,8 +13,10 @@ function FeedbackPage() {
 
   const [submittedText, setSubmittedText] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [allowedRating, setAllowedRating] = useState(true);
   const [buttonClass, setButtonClass] = useState(classes.loginButtonDefault);
   const [buttonText, setButtonText] = useState(<div>Login</div>);
+
 
   async function submitFeedback() {
     /* update firestore collection with new feedback submission */
@@ -24,6 +26,7 @@ function FeedbackPage() {
 
     setSubmittedText(true); /* disable text submission once submitted */
   }
+
 
   async function loginUser() {
     if (username === '') {
@@ -39,14 +42,19 @@ function FeedbackPage() {
       return;
     }
 
-    /* retireve user data from firebase, assuming username isn't empty */
+    /* retireve user data from firebase, assuming username isn't empty string */
     const userRef = doc(firestore, 'users', username);
     const userData = await getDoc(userRef);
 
     if ((userData.exists()) && (userData.data().password === password)) {
-      /* set state to logged in and change button if user login is valid */
+      /* adjust button if user has logged in successfully */
       setButtonClass(classes.loginButtonSuccess);
       setButtonText(<div>Logged In &#10003;</div>);
+
+      if (typeof userData.data().ratingSubmit !== 'undefined') {
+        setAllowedRating(false); /* not allowed to submit rating if already submitted */
+      }
+      /* if login details are correct then allow to login */
       setLoggedIn(true);
     } else {
       /* if user login is invalid display on button */
@@ -84,7 +92,9 @@ function FeedbackPage() {
         <div className={classes.separator} />
         <body>
           Login using the username and password that you created when playing
-          the game to submit ratings and feedback.
+          the game to submit ratings and feedback. Please note that you can
+          submit feedback as many times as you want, but you can only submit a
+          rating once.
         </body>
         <div className={classes.separator} />
 
@@ -113,7 +123,7 @@ function FeedbackPage() {
 
       <Card>
         <header>Rate IPL Simulation</header>
-        <StarRating disabled={!loggedIn}/>
+        <StarRating disabled={!loggedIn || !allowedRating} username={username}/>
       </Card>
 
       <Card>
