@@ -1,4 +1,5 @@
-.on {
+/* star unhighlighted with cursor enabled*/
+.off {
   background-color: transparent;
   border: none;
   outline: none;
@@ -8,12 +9,33 @@
   font-size: 50px;
 }
 
-.off {
+/* star highlighted with cursor enabled */
+.on {
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
   color: #ffff00;
+  width: 50px;
+  font-size: 50px;
+}
+
+/* star highlighted with cursor disabled */
+.ratingSubmitted {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #ffff00;
+  width: 50px;
+  font-size: 50px;
+}
+
+/* star unhighlighted with cursor disabled */
+.disabled {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #000000;
   width: 50px;
   font-size: 50px;
 }

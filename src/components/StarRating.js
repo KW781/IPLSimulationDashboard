@@ -7,7 +7,7 @@ import SubmitButton from './SubmitButton.js';
 function StarRating(props) {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
-  const [disableStars, setDisableStars] = useState(false);
+  const [starSubmitted, setStarSubmitted] = useState(false);
 
   async function updateRating(props) {
     const ratingsRef = doc(firestore, 'ratings', 'avg-rating'); /* retrieve the document ratings document reference */
@@ -23,7 +23,19 @@ function StarRating(props) {
       numRatings: currNumRatings + 1
     });
 
-    setDisableStars(true); /* disable the stars once submit button is clicked */
+    setStarSubmitted(true); /* disable the stars once submit button is clicked */
+  }
+
+  function getStarClass(index) {
+    if (props.disabled) {
+      return classes.disabled; /* all stars should appear disblaed if user not logged in */
+    } else if (starSubmitted) {
+      /* if user has submitted all stars will be fixed with current appearance */
+      return index <= (hover || rating) ? classes.ratingSubmitted : classes.disabled;
+    } else {
+      /* otherwise change star appearance upon hovering */
+      return index <= (hover || rating) ? classes.on : classes.off;
+    }
   }
 
   return (
@@ -35,19 +47,19 @@ function StarRating(props) {
             <button
               type="button"
               key={index}
-              className={index > (hover || rating) ? classes.on : classes.off}
+              className={getStarClass(index)}
               onClick={() => {
-                if ((!disableStars) && (!props.disabled)) {
+                if ((!starSubmitted) && (!props.disabled)) {
                   setRating(index); /* only change star if not submitted and user logged in*/
                 }
               }}
               onMouseEnter={() => {
-                if ((!disableStars) && (!props.disabled)) {
+                if ((!starSubmitted) && (!props.disabled)) {
                   setHover(index); /* only change star if not submitted and user logged in */
                 }
               }}
               onMouseLeave={() => {
-                if ((!disableStars) && (!props.disabled)) {
+                if ((!starSubmitted) && (!props.disabled)) {
                   setHover(rating); /* only change star if not submitted and user logged in */
                 }
               }}>
