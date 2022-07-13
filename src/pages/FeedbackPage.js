@@ -93,14 +93,16 @@ function FeedbackPage() {
                value={username}
                onChange={(e) => {
                  setUsername(e.target.value);
-               }}/>
+               }}
+               readOnly={loggedIn}/>
         <br /><br />
         <label className={classes.loginFieldLabel}>Password: </label>
         <input type="text"
                value={password}
                onChange={(e) => {
                  setPassword(e.target.value);
-               }}/>
+               }}
+               readOnly={loggedIn}/>
 
         <div className={classes.separator} />
         <button className={buttonClass} onClick={loginUser}>
