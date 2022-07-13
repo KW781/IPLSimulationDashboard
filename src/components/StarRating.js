@@ -4,12 +4,12 @@ import { updateDoc, getDoc, doc } from '@firebase/firestore';
 import classes from './StarRatingStyling.module.css';
 import SubmitButton from './SubmitButton.js';
 
-function StarRating() {
+function StarRating(props) {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   const [disableStars, setDisableStars] = useState(false);
 
-  async function updateRating() {
+  async function updateRating(props) {
     const ratingsRef = doc(firestore, 'ratings', 'avg-rating'); /* retrieve the document ratings document reference */
     const docSnap = await getDoc(ratingsRef); /* get the document itself from the reference */
     const currNumRatings = docSnap.data().numRatings;
@@ -37,18 +37,18 @@ function StarRating() {
               key={index}
               className={index > (hover || rating) ? classes.on : classes.off}
               onClick={() => {
-                if (!disableStars) {
-                  setRating(index); /* only change star if not submitted */
+                if ((!disableStars) && (!props.disabled)) {
+                  setRating(index); /* only change star if not submitted and user logged in*/
                 }
               }}
               onMouseEnter={() => {
-                if (!disableStars) {
-                  setHover(index); /* only change star if not submitted */
+                if ((!disableStars) && (!props.disabled)) {
+                  setHover(index); /* only change star if not submitted and user logged in */
                 }
               }}
               onMouseLeave={() => {
-                if (!disableStars) {
-                  setHover(rating); /* only change star if not submitted */
+                if ((!disableStars) && (!props.disabled)) {
+                  setHover(rating); /* only change star if not submitted and user logged in */
                 }
               }}>
               <span className="star">&#9733;</span>
@@ -56,7 +56,7 @@ function StarRating() {
           );
         })}
       </div>
-      <SubmitButton uponClick={updateRating}/>
+      <SubmitButton uponClick={updateRating} disabled={props.disabled}/>
     </div>
   );
 }

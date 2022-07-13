@@ -111,7 +111,7 @@ function FeedbackPage() {
 
       <Card>
         <header>Rate IPL Simulation</header>
-        <StarRating />
+        <StarRating disabled={!loggedIn}/>
       </Card>
 
       <Card>
