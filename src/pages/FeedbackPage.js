@@ -43,10 +43,10 @@ function FeedbackPage() {
     const userRef = doc(firestore, 'users', username);
     const userData = await getDoc(userRef);
 
-    if ((userData.exists()) && (userData.password === password)) {
+    if ((userData.exists()) && (userData.data().password === password)) {
       /* set state to logged in and change button if user login is valid */
       setButtonClass(classes.loginButtonSuccess);
-      setButtonText(<div>Logged In &#10003</div>);
+      setButtonText(<div>Logged In &#10003;</div>);
       setLoggedIn(true);
     } else {
       /* if user login is invalid display on button */
