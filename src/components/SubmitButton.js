@@ -6,13 +6,21 @@ function SubmitButton(props) {
   const unsubmittedText = (<div>Submit</div>);
 
   const [submitted, setSubmitted] = useState(false);
-  const [buttonClass, setButtonClass] = useState(props.disabled ? classes.disabled : classes.unsubmitted);
 
   function clickFunc() {
     if ((!submitted) && (!props.disabled)) {
       setSubmitted(true);
-      setButtonClass(classes.submitted);
       props.uponClick();
+    }
+  }
+
+  function getButtonClass() {
+    if (props.disabled) {
+      return classes.disabled;
+    } else if (!submitted) {
+      return classes.unsubmitted;
+    } else {
+      return classes.submitted;
     }
   }
 
@@ -20,7 +28,7 @@ function SubmitButton(props) {
     <div>
       <div className={classes.separator} />
       <button onClick={clickFunc}
-              className={buttonClass}>
+              className={getButtonClass()}>
                 {submitted ? submittedText : unsubmittedText}
       </button>
       <div className={classes.separator} />
