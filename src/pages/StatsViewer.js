@@ -9,14 +9,12 @@ function StatsViewer() {
   const [password, setPassword] = useState('');
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [num, setNum] = useState(30);
   const [buttonClass, setButtonClass] = useState(classes.loginButtonDefault);
   const [buttonText, setButtonText] = useState(<div>Login</div>);
   const [statsArr, setStatsArr] = useState([]);
 
 
   function getStat(statNum) {
-    var winRate;
     if (loggedIn) {
       if (statNum == 4) { /* check if win rate is being requested, and if so, round to 2 dp and attach percent symbol */
         return statsArr[statNum] + '%';
