@@ -92,7 +92,7 @@ function FeedbackPage() {
         <div className={classes.separator} />
         <body>
           Login using the username and password that you created when playing
-          the game to submit ratings and feedback. Please note that you can
+          IPL Simulation to submit ratings and feedback. Please note that you can
           submit feedback as many times as you want, but you can only submit a
           rating once.
         </body>
