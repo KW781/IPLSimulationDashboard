@@ -15,6 +15,20 @@ function StatsViewer() {
   const [statsArr, setStatsArr] = useState([]);
 
 
+  function getStat(statNum) {
+    var winRate;
+    if (loggedIn) {
+      if (statNum == 4) { /* check if win rate is being requested, and if so, round to 2 dp and attach percent symbol */
+        return statsArr[statNum] + '%';
+      } else {
+        return statsArr[statNum];
+      }
+    } else {
+      return '-';
+    }
+  }
+
+
   async function loginUser() {
     if (username === '') {
       /* if username is empty then fail the user validation */
@@ -44,7 +58,7 @@ function StatsViewer() {
                    userData.data().matchWins,
                    userData.data().matchLosses,
                    userData.data().matchTies,
-                   (userData.data().matchWins / (userData.data().matchWins + userData.data().matchLosses + userData.data().matchTies)) * 100,
+                   ((userData.data().matchWins / (userData.data().matchWins + userData.data().matchLosses + userData.data().matchTies)) * 100).toFixed(2),
                    userData.data().compsPlayed,
                    userData.data().compWins,
                    userData.data().playersBought,
@@ -101,9 +115,15 @@ function StatsViewer() {
       <Card>
         <header>Your IPL Simulation Stats</header>
         <ul>
-          <li>
-            Number of matches played:
-          </li>
+          <li>Number of matches played: {getStat(0)}</li>
+          <li>Number of matches won: {getStat(1)}</li>
+          <li>Number of matches lost: {getStat(2)}</li>
+          <li>Number of matches tied: {getStat(3)}</li>
+          <li>Match win rate: {getStat(4)}</li>
+          <li>Number of tournaments played: {getStat(5)}</li>
+          <li>Number of tournaments won: {getStat(6)}</li>
+          <li>Number of players bought in auctions: {getStat(7)}</li>
+          <li>Highest ranking achieved in IPL: {getStat(8)}</li>
         </ul>
       </Card>
     </div>
