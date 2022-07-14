@@ -9,8 +9,10 @@ function StatsViewer() {
   const [password, setPassword] = useState('');
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const [num, setNum] = useState(30);
   const [buttonClass, setButtonClass] = useState(classes.loginButtonDefault);
   const [buttonText, setButtonText] = useState(<div>Login</div>);
+  const [statsArr, setStatsArr] = useState([]);
 
 
   async function loginUser() {
@@ -36,6 +38,17 @@ function StatsViewer() {
       setButtonClass(classes.loginButtonSuccess);
       setButtonText(<div>Logged In &#10003;</div>);
       setLoggedIn(true);
+
+      /* fetch user's stats from firestore to be displayed */
+      setStatsArr([userData.data().matchWins + userData.data().matchLosses + userData.data().matchTies,
+                   userData.data().matchWins,
+                   userData.data().matchLosses,
+                   userData.data().matchTies,
+                   (userData.data().matchWins / (userData.data().matchWins + userData.data().matchLosses + userData.data().matchTies)) * 100,
+                   userData.data().compsPlayed,
+                   userData.data().compWins,
+                   userData.data().playersBought,
+                   userData.data().highestRank]);
     } else {
       /* if user login is invalid display on button */
       setButtonClass(classes.loginButtonFail);
@@ -83,6 +96,15 @@ function StatsViewer() {
           {buttonText}
         </button>
         <div className={classes.separator} />
+      </Card>
+
+      <Card>
+        <header>Your IPL Simulation Stats</header>
+        <ul>
+          <li>
+            Number of matches played:
+          </li>
+        </ul>
       </Card>
     </div>
   );
