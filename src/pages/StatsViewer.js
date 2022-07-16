@@ -9,6 +9,7 @@ function StatsViewer() {
   const [password, setPassword] = useState('');
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const [num, setNum] = useState(30);
   const [buttonClass, setButtonClass] = useState(classes.loginButtonDefault);
   const [buttonText, setButtonText] = useState(<div>Login</div>);
   const [statsArr, setStatsArr] = useState([]);
@@ -16,11 +17,7 @@ function StatsViewer() {
 
   function getStat(statNum) {
     if (loggedIn) {
-      if (statNum == 4) { /* check if win rate is being requested, and if so, round to 2 dp and attach percent symbol */
-        return statsArr[statNum] + '%';
-      } else {
-        return statsArr[statNum];
-      }
+      return statsArr[statNum];
     } else {
       return '-';
     }
@@ -56,7 +53,7 @@ function StatsViewer() {
                    userData.data().matchWins,
                    userData.data().matchLosses,
                    userData.data().matchTies,
-                   ((userData.data().matchWins / (userData.data().matchWins + userData.data().matchLosses + userData.data().matchTies)) * 100).toFixed(2),
+                   ((userData.data().matchWins / (userData.data().matchWins + userData.data().matchLosses + userData.data().matchTies)) * 100).toFixed(2) + '%',
                    userData.data().compsPlayed,
                    userData.data().compWins,
                    userData.data().playersBought,
