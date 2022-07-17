@@ -81,7 +81,8 @@ function FeedbackPage() {
             </li>
             <li>
             Your feedback will be read and taken into account when adding new
-            features to future versions.
+            features to future versions (feel free to report any bugs you've
+            experienced).
             </li>
           </ul>
         </div>
