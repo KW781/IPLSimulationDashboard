@@ -12,16 +12,7 @@ function StatsViewer() {
   const [num, setNum] = useState(30);
   const [buttonClass, setButtonClass] = useState(classes.loginButtonDefault);
   const [buttonText, setButtonText] = useState(<div>Login</div>);
-  const [statsArr, setStatsArr] = useState([]);
-
-
-  function getStat(statNum) {
-    if (loggedIn) {
-      return statsArr[statNum];
-    } else {
-      return '-';
-    }
-  }
+  const [statsArr, setStatsArr] = useState(['-', '-', '-', '-', '-', '-', '-', '-', '-']);
 
 
   async function loginUser() {
@@ -110,15 +101,15 @@ function StatsViewer() {
       <Card>
         <header>Your IPL Simulation Stats</header>
         <ul>
-          <li>Number of matches played: {getStat(0)}</li>
-          <li>Number of matches won: {getStat(1)}</li>
-          <li>Number of matches lost: {getStat(2)}</li>
-          <li>Number of matches tied: {getStat(3)}</li>
-          <li>Match win rate: {getStat(4)}</li>
-          <li>Number of tournaments played: {getStat(5)}</li>
-          <li>Number of tournaments won: {getStat(6)}</li>
-          <li>Number of players bought in auctions: {getStat(7)}</li>
-          <li>Highest ranking achieved in IPL: {getStat(8)}</li>
+          <li>Number of matches played: {statsArr[0]}</li>
+          <li>Number of matches won: {statsArr[1]}</li>
+          <li>Number of matches lost: {statsArr[2]}</li>
+          <li>Number of matches tied: {[statsArr[3]]}</li>
+          <li>Match win rate: {statsArr[4]}</li>
+          <li>Number of tournaments played: {statsArr[5]}</li>
+          <li>Number of tournaments won: {statsArr[6]}</li>
+          <li>Number of players bought in auctions: {statsArr[7]}</li>
+          <li>Highest ranking achieved in IPL: {statsArr[8]}</li>
         </ul>
       </Card>
     </div>
